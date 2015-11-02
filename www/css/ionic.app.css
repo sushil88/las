@@ -5579,6 +5579,12 @@ ion-tabs.tabs-color-active-dark .tab-item {
   .popup-open .popup-backdrop, .popup-open .popup {
     pointer-events: auto; }
 
+.popup {
+  width: 400px;
+  height: 350px;
+}
+
+
 /**
  * Loading
  * --------------------------------------------------

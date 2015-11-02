@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'chart.js'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -21,6 +21,61 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       StatusBar.styleLightContent();
     }
   });
+})
+
+.factory("$fileFactory",function($q) {
+  var File = function(){
+    alert('FileController1');
+  };
+  File.prototype = {
+    getParentDirectory: function(path) {
+      var deferred = $q.defer();
+      window.resolveLocalFileSystemURI(path, function(fileSystem){
+        alert('FileController2');
+        fileSystem.getParent(function(result){
+          deferred.resolve(result);
+        }, function(error){
+          deferred.reject(error);
+        });
+      }, function(error){
+        deferred.reject(error);
+      });
+      return deferred.promise;
+    },
+
+    getEntriesAtRoot: function() {
+      var deferred = $q.defer();
+      window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
+        alert('FileController3');
+        var directoryReader = fileSystem.root.createReader();
+        directoryReader.readEntries(function(entries){
+          deferred.resolve(entries);
+        }, function(error){
+          deferred.reject(error);
+        });
+      }, function(error){
+        deferred.reject(error);
+      });
+      return deferred.promise;
+    },
+
+    getEntries: function(path) {
+      var deferred = $q.defer();
+      window.resolveLocalFileSystemURI(path, function(fileSystem){
+        alert('FileController4');
+        var directoryReader = fileSystem.createReader();
+        directoryReader.readEntries(function(entries){
+          deferred.resolve(entries);
+        }, function(error){
+          deferred.reject(error);
+        });
+      }, function(error){
+        deferred.reject(error);
+      });
+      return deferred.promise;
+    }
+  };
+    return File;
 })
 
 .config(function($stateProvider, $urlRouterProvider) {

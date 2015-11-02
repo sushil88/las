@@ -6,9 +6,15 @@
 -->
 <ion-view view-title="{{chat.name}}">
   <ion-content class="padding">
-    <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
-    <p>
-      {{chat.lastText}}
-    </p>
+    <!--<img ng-src="{{chat.face}}" style="width: 64px; height: 64px">-->
+    <!--<p>-->
+      <!--{{chat.lastText}}-->
+    <!--</p>-->
+    <div class="card" style="height: 800px">
+      <div class="item item-body" style="height: 800px; padding-top: 100px;">
+        <canvas id="myChart" style=" -webkit-transform: rotate(-25.2deg); transform: rotate(90deg);  height:800px;"></canvas>
+        <!--<canvas  style="transform: rotate(90deg); vertical-align: middle; height: 800px" id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-legend="true" chart-series="series" options="{showTooltips: false, bezierCurve : false, pointDot : false}"></canvas>-->
+      </div>
+    </div>
   </ion-content>
 </ion-view>
