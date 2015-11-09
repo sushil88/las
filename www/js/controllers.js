@@ -2,68 +2,68 @@ angular.module('starter.controllers', [])
 
 
 .controller('FileController', function($scope, $ionicPlatform, $fileFactory){
-    var fs = new $fileFactory();
-    alert('FileController5');
-    $ionicPlatform.ready(function(){
-      alert('FileController6');
-      fs.getEntriesAtRoot().then(function(result){
-        alert('FileController7', result);
-        $scope.files = result;
-      }, function(error){
-        alert('FileController8', error);
-        alert('errr' + error);
-      });
-      alert('FileController9', $scope.files);
-      $scope.getContents = function(path) {
-        alert('FileController10', $scope.files);
-        fs.getEntries(path).then(function(result){
-          $scope.files = result;
-          $scope.files.unshift({name: "[parent]"});
-          fs.getParentDirectory(path).then(function(result){
-            result.name = "[parent]";
-            $scope.files[0] = result;
-          });
-        }, function (error) {
-          alert('error', error);
-        });
-      }
-
-    });
+    //var fs = new $fileFactory();
+    //alert('FileController5');
+    //$ionicPlatform.ready(function(){
+    //  alert('FileController6');
+    //  fs.getEntriesAtRoot().then(function(result){
+    //    alert('FileController7', result);
+    //    $scope.files = result;
+    //  }, function(error){
+    //    alert('FileController8', error);
+    //    alert('errr' + error);
+    //  });
+    //  alert('FileController9', $scope.files);
+    //  $scope.getContents = function(path) {
+    //    alert('FileController10', $scope.files);
+    //    fs.getEntries(path).then(function(result){
+    //      $scope.files = result;
+    //      $scope.files.unshift({name: "[parent]"});
+    //      fs.getParentDirectory(path).then(function(result){
+    //        result.name = "[parent]";
+    //        $scope.files[0] = result;
+    //      });
+    //    }, function (error) {
+    //      alert('error', error);
+    //    });
+    //  }
+    //
+    //});
 })
 
-.controller('DashCtrl', function($scope, $ionicPopup, $timeout) {
-    // Triggered on a button click, or some other target
-    $scope.showPopup = function() {
-      $scope.data = {}
-      // An elaborate, custom popup
-      var myPopup = $ionicPopup.show({
-        //template: '<input type="password" ng-model="data.wifi">',
-        template: '<ion-content ng-controller="FileController">' +
-                    '<div class="list">' +
-                      '<div ng-repeat="file in files">' +
-                        '<a class="item item-icon-left" href="#" ng-Click="getContents(file.nativeURL)">' +
-                          '<i ng-show = "file.isDirectory" class="icon ion-folder"></i>' +
-                          '<i ng-show = "file.isFile" class="icon ion-document"></i>' +
-                          '{{file.name}}' +
-                        '</a>' +
-                      '</div>' +
-                    '</div>' +
-                  '</ion-content>',
-        title: 'Select a LAS file',
-        subTitle: '.las or .txt',
-        //height: '80%',
-        scope: $scope,
-        //buttons: [
-        //  { text: 'Cancel', class: 'button'}
-        //]
-      });
-      myPopup.then(function(res) {
-        console.log('Tapped!', res);
-      });
-      //$timeout(function() {
-      //  myPopup.close(); //close the popup after 3 seconds for some reason
-      //}, 3000);
-    };
+.controller('DashCtrl', function($scope, Chats) {
+    //// Triggered on a button click, or some other target
+    //$scope.showPopup = function() {
+    //  $scope.data = {}
+    //  // An elaborate, custom popup
+    //  var myPopup = $ionicPopup.show({
+    //    //template: '<input type="password" ng-model="data.wifi">',
+    //    template: '<ion-content ng-controller="FileController">' +
+    //                '<div class="list">' +
+    //                  '<div ng-repeat="file in files">' +
+    //                    '<a class="item item-icon-left" href="#" ng-Click="getContents(file.nativeURL)">' +
+    //                      '<i ng-show = "file.isDirectory" class="icon ion-folder"></i>' +
+    //                      '<i ng-show = "file.isFile" class="icon ion-document"></i>' +
+    //                      '{{file.name}}' +
+    //                    '</a>' +
+    //                  '</div>' +
+    //                '</div>' +
+    //              '</ion-content>',
+    //    title: 'Select a LAS file',
+    //    subTitle: '.las or .txt',
+    //    //height: '80%',
+    //    scope: $scope,
+    //    //buttons: [
+    //    //  { text: 'Cancel', class: 'button'}
+    //    //]
+    //  });
+    //  myPopup.then(function(res) {
+    //    console.log('Tapped!', res);
+    //  });
+    //  //$timeout(function() {
+    //  //  myPopup.close(); //close the popup after 3 seconds for some reason
+    //  //}, 3000);
+    //};
   })
 
 .controller('ChatsCtrl', function($scope, Chats) {
