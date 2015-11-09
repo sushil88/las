@@ -31,7 +31,7 @@ angular.module('starter.controllers', [])
     //});
 })
 
-.controller('DashCtrl', function($scope, Chats) {
+.controller('DashCtrl', function($scope, charts) {
     //// Triggered on a button click, or some other target
     //$scope.showPopup = function() {
     //  $scope.data = {}
@@ -66,7 +66,7 @@ angular.module('starter.controllers', [])
     //};
   })
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('chartsCtrl', function($scope, charts) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -75,14 +75,14 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
+  $scope.charts = charts.all();
+  $scope.remove = function(chart) {
+    charts.remove(chart);
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('chartDetailCtrl', function($scope, $stateParams, charts) {
+  $scope.chart = charts.get($stateParams.chartId);
   //$scope.labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   //$scope.series = ['Series A', 'Series B'];
   //$scope.data = [
