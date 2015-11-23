@@ -2,33 +2,33 @@ angular.module('starter.controllers', [])
 
 
 .controller('FileController', function($scope, $ionicPlatform, $fileFactory){
-    //var fs = new $fileFactory();
+    var fs = new $fileFactory();
     //alert('FileController5');
-    //$ionicPlatform.ready(function(){
-    //  alert('FileController6');
-    //  fs.getEntriesAtRoot().then(function(result){
-    //    alert('FileController7', result);
-    //    $scope.files = result;
-    //  }, function(error){
-    //    alert('FileController8', error);
-    //    alert('errr' + error);
-    //  });
-    //  alert('FileController9', $scope.files);
-    //  $scope.getContents = function(path) {
-    //    alert('FileController10', $scope.files);
-    //    fs.getEntries(path).then(function(result){
-    //      $scope.files = result;
-    //      $scope.files.unshift({name: "[parent]"});
-    //      fs.getParentDirectory(path).then(function(result){
-    //        result.name = "[parent]";
-    //        $scope.files[0] = result;
-    //      });
-    //    }, function (error) {
-    //      alert('error', error);
-    //    });
-    //  }
-    //
-    //});
+    $ionicPlatform.ready(function(){
+      //alert('FileController6');
+      fs.getEntriesAtRoot().then(function(result){
+        //alert('FileController7', result);
+        $scope.files = result;
+      }, function(error){
+        //alert('FileController8', error);
+        alert('errr' + error);
+      });
+      //alert('FileController9', $scope.files);
+      $scope.getContents = function(path) {
+        //alert('FileController10', $scope.files);
+        fs.getEntries(path).then(function(result){
+          $scope.files = result;
+          $scope.files.unshift({name: "[parent]"});
+          fs.getParentDirectory(path).then(function(result){
+            result.name = "[parent]";
+            $scope.files[0] = result;
+          });
+        }, function (error) {
+          alert('error', error);
+        });
+      }
+
+    });
 })
 
 .controller('DashCtrl', function($scope, charts) {

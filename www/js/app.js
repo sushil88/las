@@ -25,13 +25,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
 .factory("$fileFactory",function($q) {
   var File = function(){
-    alert('FileController1');
+    //alert('FileController1');
   };
   File.prototype = {
     getParentDirectory: function(path) {
       var deferred = $q.defer();
       window.resolveLocalFileSystemURI(path, function(fileSystem){
-        alert('FileController2');
+        //alert('FileController2');
         fileSystem.getParent(function(result){
           deferred.resolve(result);
         }, function(error){
@@ -46,7 +46,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     getEntriesAtRoot: function() {
       var deferred = $q.defer();
       window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
-        alert('FileController3');
+        //alert('FileController3');
         var directoryReader = fileSystem.root.createReader();
         directoryReader.readEntries(function(entries){
           deferred.resolve(entries);
@@ -62,7 +62,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     getEntries: function(path) {
       var deferred = $q.defer();
       window.resolveLocalFileSystemURI(path, function(fileSystem){
-        alert('FileController4');
+        //alert('FileController4');
         var directoryReader = fileSystem.createReader();
         directoryReader.readEntries(function(entries){
           deferred.resolve(entries);
