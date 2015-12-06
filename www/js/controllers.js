@@ -92,8 +92,12 @@ angular.module('starter.controllers', [])
   //$scope.onClick = function (points, evt) {
   //  console.log(points, evt);
   //};
+  var xAxis = charts.getXAxisData();
+  alert($stateParams.chartId);
+  var yAxis = charts.getAxisData($stateParams.chartId);
     var data = {
-      labels: ["1", "2", "3", "4", "5", "6", "7", "1", "2", "3", "4", "5", "6", "7", "1", "2", "3", "4", "5", "6", "7"],
+      //labels: ["1", "2", "3", "4", "5", "6", "7", "1", "2", "3", "4", "5", "6", "7", "1", "2", "3", "4", "5", "6", "7"],
+      labels : xAxis,
       datasets: [
         {
           label: "My First dataset",
@@ -103,18 +107,19 @@ angular.module('starter.controllers', [])
           pointStrokeColor: "#fff",
           pointHighlightFill: "#fff",
           pointHighlightStroke: "rgba(220,220,220,1)",
-          data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40]
-        },
-        {
-          label: "My Second dataset",
-          fillColor: "rgba(151,187,205,0.2)",
-          strokeColor: "rgba(151,187,205,1)",
-          pointColor: "rgba(151,187,205,1)",
-          pointStrokeColor: "#fff",
-          pointHighlightFill: "#fff",
-          pointHighlightStroke: "rgba(151,187,205,1)",
-          data: [28, 48, 40, 19, 86, 27, 90, 28, 48, 40, 19, 86, 27, 90, 28, 48, 40, 19, 86, 27, 90]
+          //data: [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40]
+          data: yAxis
         }
+        //{
+        //  label: "My Second dataset",
+        //  fillColor: "rgba(151,187,205,0.2)",
+        //  strokeColor: "rgba(151,187,205,1)",
+        //  pointColor: "rgba(151,187,205,1)",
+        //  pointStrokeColor: "#fff",
+        //  pointHighlightFill: "#fff",
+        //  pointHighlightStroke: "rgba(151,187,205,1)",
+        //  data: [28, 48, 40, 19, 86, 27, 90, 28, 48, 40, 19, 86, 27, 90, 28, 48, 40, 19, 86, 27, 90]
+        //}
       ]
     };
     var ctx = document.getElementById("myChart").getContext("2d");
