@@ -62,14 +62,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     getEntries: function(path) {
       var deferred = $q.defer();
       window.resolveLocalFileSystemURI(path, function(fileSystem){
-        //alert('FileController4');
+        alert('getEntries' + path + ' ' + fileSystem);
         var directoryReader = fileSystem.createReader();
         directoryReader.readEntries(function(entries){
+          alert('resolved');
           deferred.resolve(entries);
         }, function(error){
+          alert('rejected1');
           deferred.reject(error);
         });
       }, function(error){
+        alert('rejected2');
         deferred.reject(error);
       });
       return deferred.promise;

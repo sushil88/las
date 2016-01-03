@@ -1,8 +1,9 @@
 <ion-view view-title="LAS Viewer">
   <ion-content class="padding" ng-controller="DashCtrl">
-    <a class="button button-full button-positive" href="#/tab/files">
-      Select File
-    </a>
+    <!--<a class="button button-full button-positive" href="#/tab/files">-->
+      <!--Select File-->
+    <!--</a>-->
+    <input type="file" on-read-file="showContent($fileContent)" />
 
     <div class="list card">
       <div class="item item-divider">Recent Files</div>
